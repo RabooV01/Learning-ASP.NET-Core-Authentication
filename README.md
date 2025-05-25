@@ -14,8 +14,6 @@ a common way is that a request contains a header "Authorization" formatted as "[
     - protected EP will be (`/weatherforecast/protected`) and will return weatherforecast object
 3. testing EP with postman with hardcoded credentials.
 
-### my notes while implementing
+### Notes while implementing
 I did not specified authentication type (scheme) on `claimsIdentity` object that lead to fail on authorizing me even with correct credentials.
 must use `Encoding.UTF8.GetString` instead of using `.ToString()` to get string out from byte array.
-
-        
