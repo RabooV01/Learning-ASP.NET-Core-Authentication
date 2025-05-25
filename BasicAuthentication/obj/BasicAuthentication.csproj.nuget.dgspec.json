@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Self Learning\\ASP.NET Core\\Authentication\\basicauthentication\\BasicAuthentication.csproj": {}
+    "D:\\Self Learning\\ASP.NET Core\\Authentication\\BasicAuthentication\\BasicAuthentication.csproj": {}
   },
   "projects": {
-    "D:\\Self Learning\\ASP.NET Core\\Authentication\\basicauthentication\\BasicAuthentication.csproj": {
+    "D:\\Self Learning\\ASP.NET Core\\Authentication\\BasicAuthentication\\BasicAuthentication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Self Learning\\ASP.NET Core\\Authentication\\basicauthentication\\BasicAuthentication.csproj",
+        "projectUniqueName": "D:\\Self Learning\\ASP.NET Core\\Authentication\\BasicAuthentication\\BasicAuthentication.csproj",
         "projectName": "BasicAuthentication",
-        "projectPath": "D:\\Self Learning\\ASP.NET Core\\Authentication\\basicauthentication\\BasicAuthentication.csproj",
+        "projectPath": "D:\\Self Learning\\ASP.NET Core\\Authentication\\BasicAuthentication\\BasicAuthentication.csproj",
         "packagesPath": "C:\\Users\\VICTUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Self Learning\\ASP.NET Core\\Authentication\\basicauthentication\\obj\\",
+        "outputPath": "D:\\Self Learning\\ASP.NET Core\\Authentication\\BasicAuthentication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

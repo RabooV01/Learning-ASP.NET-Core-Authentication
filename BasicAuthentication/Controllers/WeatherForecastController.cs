@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
@@ -24,9 +25,10 @@ namespace BasicAuthentication.Controllers
         [HttpGet("protected")]
         public WeatherForecast GetProtectedForecast()
         {
+            var userId = ((ClaimsIdentity)User.Identity!).FindFirst(ClaimTypes.NameIdentifier);
             return new WeatherForecast() 
             {
-                Summary = "Top secret forecast: weather is sunny :D",
+                Summary = $"Top secret forecast: weather is sunny :D, and userId is: {userId}",
                 Date = DateOnly.Parse("2025/5/25"),
                 TemperatureC = 36
             };
