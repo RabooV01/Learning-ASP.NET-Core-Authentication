@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 
 namespace BasicAuthentication.Controllers
 {
@@ -16,6 +18,18 @@ namespace BasicAuthentication.Controllers
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+        }
+
+        [Authorize]
+        [HttpGet("protected")]
+        public WeatherForecast GetProtectedForecast()
+        {
+            return new WeatherForecast() 
+            {
+                Summary = "Top secret forecast: weather is sunny :D",
+                Date = DateOnly.Parse("2025/5/25"),
+                TemperatureC = 36
+            };
         }
 
         [HttpGet(Name = "GetWeatherForecast")]

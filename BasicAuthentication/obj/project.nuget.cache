@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+3gFhlhokh8=",
+  "dgSpecHash": "u2JxZfO+xb0=",
   "success": true,
-  "projectFilePath": "D:\\Self Learning\\ASP.NET Core\\Authentication\\BasicAuthentication\\BasicAuthentication.csproj",
+  "projectFilePath": "D:\\Self Learning\\ASP.NET Core\\Authentication\\basicauthentication\\BasicAuthentication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VICTUS\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.5\\microsoft.aspnetcore.openapi.9.0.5.nupkg.sha512",
     "C:\\Users\\VICTUS\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
