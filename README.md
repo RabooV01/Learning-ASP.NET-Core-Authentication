@@ -1,8 +1,8 @@
 # Authentication & Authorization Concepts
 
 ### Basic Authentication:
-    weakest way of authenticating a user, since we are sending the credentials everytime on each request headers.
-    a common way is that a request contains a header "Authorization" formatted as "[authType] [encoded creds]"
+weakest way of authenticating a user, since we are sending the credentials everytime on each request headers.
+a common way is that a request contains a header "Authorization" formatted as "[authType] [encoded creds]"
 
 ### Learning and impelementing basic authentication concept using `ASP.NET Core`.
 1. adding authentication scheme and handler
@@ -15,7 +15,7 @@
 3. testing EP with postman with hardcoded credentials.
 
 ### my notes while implementing
-    - I did not specified authentication type (scheme) on `claimsIdentity` object that lead to fail on authorizing me even with correct credentials.
-    - must use `Encoding.UTF8.GetString` instead of using `.ToString()` to get string out from byte array.
+I did not specified authentication type (scheme) on `claimsIdentity` object that lead to fail on authorizing me even with correct credentials.
+must use `Encoding.UTF8.GetString` instead of using `.ToString()` to get string out from byte array.
 
         
