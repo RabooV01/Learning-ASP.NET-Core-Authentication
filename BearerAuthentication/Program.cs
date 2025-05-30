@@ -1,8 +1,33 @@
+using System.Text;
+using BearerAuthentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.IdentityModel.Tokens;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+var JwtConfig = builder.Configuration.GetSection("JWT") // bring jwt option section as an object
+    .Get<JWTConfig>()!; // bind it to class object
+
+builder.Services.AddAuthentication() // add authentication to the builder
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt => { // add authentication option (JWT Bearer)
+        opt.SaveToken = true;
+        opt.TokenValidationParameters = new () { // setting up validation params
+            ValidateIssuer = true, // Ensures that the issuer of the token matches the expected issuer
+            ValidIssuer = JwtConfig.Issuer, 
+            ValidateAudience = true,
+            ValidAudience = JwtConfig.Audience,
+            ValidateIssuerSigningKey = true, //  Validates that the signing key used to sign the token matches our signing key
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtConfig.SigningKey!)),
+            ValidateLifetime = true
+        };
+    });
+
 
 var app = builder.Build();
 
@@ -13,6 +38,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthorization();
 
 var summaries = new[]
 {
