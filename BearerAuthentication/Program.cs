@@ -37,7 +37,9 @@ builder.Services.AddAuthentication() // add authentication to the builder
             ClockSkew = TimeSpan.FromMinutes(1) // allowing only 1min difference
         };
     });
-builder.Services.AddAuthorization();
+
+/*must add this line because minimal API does not assume any default authorization implementations*/
+builder.Services.AddAuthorization(); 
 
 
  // instead of injecting IConfiguration and getting jwt section
@@ -53,7 +55,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//app.UseAuthentication();
+app.UseAuthentication();
 app.UseAuthorization();
 
 var summaries = new[]
@@ -102,8 +104,10 @@ app.MapPost("/api/Auth", (JWTAuthService authSerivce, Login login) =>
 });
 
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/weatherforecast", (HttpContext ctx) =>
 {
+    // able to get user info because of adding UseAuthentication middleware to the pipeline
+    var user = ctx.User.Identity?.Name; 
     var forecast =  Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
@@ -112,7 +116,7 @@ app.MapGet("/weatherforecast", () =>
             summaries[Random.Shared.Next(summaries.Length)]
         ))
         .ToArray();
-    return forecast;
+    return Results.Ok(new { forecast, user});
 })
 .RequireAuthorization()
 .WithName("GetWeatherForecast");
